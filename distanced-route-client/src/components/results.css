@@ -74,11 +74,25 @@
 .label-container {
     width: 100%;
     padding-left: 300px;
-    padding-bottom: 3px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* padding-bottom: 3px; */
+    height: 20px;
+    border-bottom: 1px solid hsla(0, 0%, 85%, 1);
     display: flex;
     box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.4);
+    background: rgb(243, 241, 235);
+}
+
+.label-block:nth-child(odd) {
+    background: rgba(0, 0, 0, 0.075);
+}
+
+.time-pointer {
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    top: 0px;
+    animation: pulse 3s ease-in-out infinite;
+    box-shadow: 1px 1px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
 .step-bullet {
@@ -125,4 +139,67 @@
 }
 .step-travel-mode-label {
     padding-left: 60px;
+}
+
+.tabs-container {
+    width: 300px;
+    display: flex;
+    position: absolute;
+}
+
+.tab {
+    cursor: pointer;
+    width: 50px;
+    height: calc(20px - 2px);
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 0px solid transparent;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    transition: all 0.15s linear;
+}
+
+.tab:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.tab.active {
+    background-color: transparent;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgb(239, 235, 233);
+}
+
+@keyframes pulse {
+    0% {
+        background-color: transparent;
+    }
+    50% {
+        background-color: red;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.legend-shell {
+    width: 300px;
+    position: absolute;
+    left: 30px;
+}
+
+.back-button {
+    background: transparent;
+    border: 1px solid black;
+    border-radius: 3px;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1em;
+    transition: all 0.15s linear;
+}
+
+.back-button:hover {
+    background: rgba(0, 0, 0, 0.15);
 }

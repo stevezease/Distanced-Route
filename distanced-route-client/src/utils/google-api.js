@@ -40,7 +40,7 @@ export const generateDirections = async form => {
     //         'Access-Control-Allow-Origin': '*'
     //     }
     // });
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 500));
     return generateMockTransit(
         form.origin.description.split(',')[0],
         form.destination.description.split(',')[0]
@@ -89,17 +89,19 @@ const generatePopularity = obj => {
 };
 
 const generateMockTransit = (start, end) => {
-    const numRoutes = Math.floor(Math.random() * 3) + 1;
+    const numRoutes = Math.floor(Math.random() * 3) + 2;
+    const lookUp = {};
     const directions = {
-        routes: [...Array(numRoutes)].map(() => generateRoutes(start, end))
+        routes: [...Array(numRoutes)].map(() =>
+            generateRoutes(start, end, lookUp)
+        )
     };
     return directions;
 };
 
-const generateRoutes = (start, end) => {
+const generateRoutes = (start, end, lookUp) => {
     const numSteps =
         Math.floor(Math.random() * 2) + 2 + Math.floor(Math.random() * 3) + 1;
-
     const route = {
         legs: [
             {
@@ -110,7 +112,8 @@ const generateRoutes = (start, end) => {
                         start,
                         end,
                         index === 0,
-                        index === numSteps - 1
+                        index === numSteps - 1,
+                        lookUp
                     );
                 })
             }
@@ -119,7 +122,7 @@ const generateRoutes = (start, end) => {
     return route;
 };
 
-const generateSteps = (start, end, first, last) => {
+const generateSteps = (start, end, first, last, lookUp) => {
     const start_address = first ? start : faker.address.streetName();
     const end_address = last ? end : faker.address.streetName();
     const travel_mode =
@@ -129,7 +132,19 @@ const generateSteps = (start, end, first, last) => {
         end_location: { label: end_address },
         travel_mode
     };
-    generatePopularity(step.start_location);
-    generatePopularity(step.end_location);
+    if (lookUp[start_address] !== null && lookUp[start_address] !== undefined) {
+        step.start_location.popularity = lookUp[start_address];
+        console.log('cached!', start_address);
+    } else {
+        console.log('not cached!', start_address, lookUp);
+        generatePopularity(step.start_location);
+        lookUp[start_address] = step.start_location.popularity;
+    }
+    if (lookUp[end_address] !== null && lookUp[end_address] !== undefined) {
+        step.end_location.popularity = lookUp[end_address];
+    } else {
+        generatePopularity(step.end_location);
+        lookUp[end_address] = step.end_location.popularity;
+    }
     return step;
 };

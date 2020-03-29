@@ -1,0 +1,14 @@
+.legend {
+    width: 200px;
+    display: flex;
+}
+
+.legend-bar-container {
+    display: flex;
+    width: calc(100% - 50px);
+}
+.legend-bar {
+    height: calc(100% - 4px);
+    width: calc(100% - 4px);
+    margin: 2px;
+}

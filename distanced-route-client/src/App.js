@@ -31,7 +31,12 @@ function App() {
             </div>
             {generatedDirections && showResults && (
                 <div className="app-results fade-in">
-                    <Results directions={generatedDirections} />
+                    <Results
+                        directions={generatedDirections}
+                        closeResults={() => {
+                            setShowResults(false);
+                        }}
+                    />
                 </div>
             )}
         </div>
