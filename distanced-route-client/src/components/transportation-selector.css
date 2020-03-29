@@ -1,0 +1,29 @@
+.transportation-selector {
+    width: calc(100% - 4px);
+    height: 30px;
+    display: flex;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 2px ridge rgba(0, 0, 0, 0.25);
+}
+
+.transpotation-button {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.15s linear;
+    height: 30px;
+    line-height: 30px;
+}
+
+.transpotation-button:not(:last-child) {
+    border-right: solid 1px rgba(0, 0, 0, 0.25);
+}
+.transpotation-button:hover {
+    background: rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.transpotation-button.active {
+    background: rgba(0, 0, 0, 0.35);
+    color: white;
+}

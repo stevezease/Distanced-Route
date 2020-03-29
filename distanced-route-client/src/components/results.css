@@ -1,0 +1,128 @@
+.results {
+    width: 100%;
+}
+
+.results-page {
+    height: 100%;
+    width: 100%;
+}
+.results-header {
+    width: 100%;
+    text-align: left;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 10px 0px;
+    padding: 0px 20px;
+    box-sizing: border-box;
+    margin-top: 0px;
+}
+
+.steps-container {
+    max-height: calc(100% - 150px);
+    overflow-y: auto;
+    position: relative;
+}
+
+.steps-row {
+    width: 100%;
+}
+
+.steps-content {
+    width: 100%;
+    display: flex;
+}
+
+.steps-instruction {
+    width: 300px;
+    padding-top: 25px;
+    padding-left: 100px;
+    box-sizing: border-box;
+    font-weight: bold;
+    height: 75px;
+    font-size: 1em;
+    text-align: left;
+    position: relative;
+    background: rgba(255, 255, 255, 0.4);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.steps-popularity {
+    width: calc(100% - 300px);
+    min-width: 500px;
+    display: flex;
+    background: hsl(35, 21%, 89%);
+}
+
+.label-block {
+    height: 100%;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.popularity-block {
+    height: 100%;
+    width: 100%;
+    transform: all 0.25s ease-in-out;
+    cursor: pointer;
+}
+.popularity-block:hover {
+    box-shadow: inset 0px 0px 0 2px gray;
+}
+
+.label-container {
+    width: 100%;
+    padding-left: 300px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.step-bullet {
+    height: 15px;
+    width: 15px;
+    background: white;
+    border: 3px black solid;
+    border-radius: 50%;
+    position: absolute;
+    left: 60px;
+}
+
+.top-segment {
+    width: 6px;
+    height: 50%;
+    position: absolute;
+    left: 67px;
+    top: 0px;
+    background: black;
+}
+.bottom-segment {
+    width: 6px;
+    height: 50%;
+    position: absolute;
+    left: 67px;
+    top: 50%;
+    background: black;
+}
+
+.step-travel-mode {
+    display: flex;
+    padding-left: 30px;
+}
+
+.step-travel-mode-container {
+    position: absolute;
+    height: calc(100% - 10px);
+    width: 300px;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-size: 0.75em;
+}
+.step-travel-mode-label {
+    padding-left: 60px;
+}
