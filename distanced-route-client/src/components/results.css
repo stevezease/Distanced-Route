@@ -160,6 +160,12 @@
     transition: all 0.15s linear;
 }
 
+.tab.dow {
+    width: 125px;
+    font-size: 0.8em;
+    padding: 0px 5px;
+}
+
 .tab:hover:not(.active) {
     background-color: rgba(0, 0, 0, 0.2);
 }

@@ -17,6 +17,15 @@ const Results = ({ directions, closeResults }) => {
     console.log(directions);
     const [activePage, setActivePage] = useState(0);
     const [day, setDay] = useState(new Date().getDay());
+    const dotw = [
+        'Sunday',
+        'Monday',
+        'Tuesday',
+        'Thursday',
+        'Wednesday',
+        'Friday',
+        'Saturday'
+    ];
     const hourPercentage =
         (new Date().getHours() * 60 + new Date().getMinutes()) / (24 * 60);
     const numRoutes = directions.routes.length;
@@ -93,7 +102,30 @@ const Results = ({ directions, closeResults }) => {
             <h1 className="results-header">
                 {leg.start_address} ⇨ {leg.end_address}
             </h1>
+            <div className="label-container">
+                <div className="tabs-container">
+                    {[...Array(7)].map((x, index) => {
+                        return (
+                            <div
+                                key={'dowtabs,' + index}
+                                className={`tab dow ${
+                                    index === day ? 'active' : ''
+                                }`}
+                                onClick={() => {
+                                    setDay(index);
+                                }}
+                            >
+                                {dotw[index]}
+                            </div>
+                        );
+                    })}
+                </div>
+            </div>
             <div className="tabs-container">
+                <div style={{ display: 'inline-block', padding: '0px 3px' }}>
+                    {' '}
+                    Routes:{' '}
+                </div>
                 {[...Array(numRoutes)].map((x, index) => {
                     return (
                         <div
